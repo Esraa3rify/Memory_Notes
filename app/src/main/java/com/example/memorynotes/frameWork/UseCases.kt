@@ -7,5 +7,5 @@ data class UseCases(
     val getAllNotes: GetAllNotes,
     val getNote: GetNote,
     val removeNote: RemoveNote,
-    val getWordCount: GetWordCount
+    //val getWordCount: GetWordCount
 )

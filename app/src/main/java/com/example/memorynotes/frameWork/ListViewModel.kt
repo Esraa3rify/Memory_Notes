@@ -13,33 +13,26 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class NoteViewModel(application: Application): AndroidViewModel(application) {
+class ListViewModel(application: Application): AndroidViewModel(application) {
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
-    val repository = NoteRepository(RoomNoteDataSource(application))
+    val repository= NoteRepository(RoomNoteDataSource(application))
 
-    val useCases = UseCases(
+
+    val useCases=UseCases(
         AddNote(repository),
         GetAllNotes(repository),
         GetNote(repository),
         RemoveNote(repository),
     )
 
-    val saved = MutableLiveData<Boolean>()
-    val currentNote = MutableLiveData<Note?>()
+    val notes = MutableLiveData<List<Note>>()
 
-    fun saveNote(note: Note) {
+    fun getNotes(){
+
         coroutineScope.launch {
-            useCases.addNote(note)
-            saved.postValue(true)
+           val noteList=useCases.getAllNotes()
+            notes.postValue(noteList)
         }
-
-
-        fun getNote(id: Long) {
-            coroutineScope.launch {
-                val note = useCases.getNote(id)
-                currentNote.postValue(note)
-            }
-        }
-
     }
+
 }

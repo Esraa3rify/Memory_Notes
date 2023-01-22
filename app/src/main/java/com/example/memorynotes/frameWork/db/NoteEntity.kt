@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.core.data.Note
 
-
 @Entity(tableName = "note")
 data class NoteEntity(
     val title: String,
