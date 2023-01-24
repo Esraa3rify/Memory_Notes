@@ -19,6 +19,17 @@ Table of content:
 ----------------------------------
 Notes App with clean Architecture using SOLID principles and MVVM
 
+Allow the user to:
+
+-create new note.
+-Give them the word count of their massage.
+-Remove the messages.
+-Edit the existing messages.
+
+The link on Behance:
+
+https://www.behance.net/gallery/162054247/Notes
+
 ----------------------------------------------------------------------------------------------
 
 4-Technologies used:
